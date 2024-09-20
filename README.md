@@ -33,3 +33,9 @@ By the end of of october, we should have a power schematic for the robot and pos
 By the Middle of november, we should have code written for the preffered hardware like arduino so that we can communicate wirelessly with bluetooth to the robot.
 By Decemeber, we should be able to test a functional robot that can complete basic tasks wirelessly
 
+Ruoxiang Zhao 662036700
+Task:
+3D model main body by 10/20
+Build functional motion system by 10/25
+Test mech system
+Model and 3D print a robotic arm for the robot by 11/20
