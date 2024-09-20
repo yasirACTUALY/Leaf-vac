@@ -26,3 +26,11 @@ By the end of September,  we plan to have mounted cameras on the robot to be use
  By the end of October, we should have created an algorithm that processes the images from the camera and creates a 3D model of the area. 
 
 By November we should have multiple image recognition models selected and benchmarked to select one that is resource efficient given the limited processing power that could be attached to a small robot while being accurate enough to detect the different objects usually found on lawns.
+
+
+Ruoxiang Zhao 662036700
+Task:
+3D model main body by 10/20
+Build functional motion system by 10/25
+Test mech system
+Model and 3D print a robotic arm for the robot by 11/20
