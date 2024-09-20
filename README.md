@@ -39,3 +39,9 @@ Task:
 Build functional motion system by 10/25
 Test mech system
 Model and 3D print a robotic arm for the robot by 11/20
+
+Charity Osoro 66203010
+Task: Website Design
+Have header done by 10/25
+Implement search bar 11/15
+Complete functioning website by 12/1
