@@ -26,3 +26,10 @@ By the end of September,  we plan to have mounted cameras on the robot to be use
  By the end of October, we should have created an algorithm that processes the images from the camera and creates a 3D model of the area. 
 
 By November we should have multiple image recognition models selected and benchmarked to select one that is resource efficient given the limited processing power that could be attached to a small robot while being accurate enough to detect the different objects usually found on lawns.
+
+David Rowe : rowed4
+By the beginning of October, we should have selected and prepared the preferred hardware to work on for the robot
+By the end of of october, we should have a power schematic for the robot and possibly some of the circuity completed.
+By the Middle of november, we should have code written for the preffered hardware like arduino so that we can communicate wirelessly with bluetooth to the robot.
+By Decemeber, we should be able to test a functional robot that can complete basic tasks wirelessly
+
