@@ -1,0 +1,15 @@
+We have a 42,40 stepper motor 
+This supposedly has a rated voltage of 4.83 volts
+We are using two, so the recommended for both should be around 9.66, or around 10 volts
+These two stepper motors are going to be used for the movement of the robot
+
+
+We are using 2 ryobi battery 18 volts
+
+
+Servo to use 8 to 9 volts 
+This is going to be used for the arm
+
+We also need to supply volts to the camera
+
+We need to make sure that we reduce te voltage of the ryobi batteries so that we can split it into two 4.83 volts to go into the steppers, then we need around 9 volts to go into stepper, probably use the second battery so that we can use one for the camera.
