@@ -1,0 +1,19 @@
+
+Work for Servo Motor
+First learning about the servo motor
+
+1. Small Servo motor can take from 4.8 to 6.8 Volts
+
+2. We are planning on giving it 5 Volts 
+
+3. So the max current that this servo can handle at the max stall is 2.1 Amps
+
+4. The Raspberry Pi 4 model b  recommended PSU current capacity is 3 Amps
+
+5. The Raspberry Pi bare bone activation current usage is 600 mA
+   
+6. Raspberry Pi pins can only handle up to 16mA so we must use a motor driver to separate the power and then connect the control to the 
+   Raspberry Pi so that we don’t fry pins.
+
+7. The motor driver L298N can handle up to 2 Amps supposedly so it should be fine when we use it for the servo and if we ever get that high     
+   up at a stall.
