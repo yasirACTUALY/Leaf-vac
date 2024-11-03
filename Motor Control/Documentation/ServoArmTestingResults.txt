@@ -1,0 +1,14 @@
+	Connecting the servo to the arduino was simple, the required pins were just the ground, voltage, and
+the pin to control the servo. After connecting the pins to the arduino we created simple code to see if
+arm would move. The code worked in which it would move to the positions and was looped to go back and forth.
+
+	The second code we implemented was to allow for inputs to be placed to see if we could control the movement
+more accurately. It would somewhat work in which it would move to the position but there was a bug in the 
+code in which the position would automatically move back to an incorrect position.
+	We are still attempting to adjust the code to fix any minor issues to properly control the arm.
+What we are aiming for is to have sections of code that are functions that we can easily use when we want 
+to move the arm with a controller to press a button and have it move.
+	Because we are working with 5 servo motors, it will be difficult to connect and control the code
+for all of them as we need to have them moving in seperate ways. We will be testing that out at another time.
+
+	
