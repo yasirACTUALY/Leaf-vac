@@ -1,0 +1,11 @@
+I am currently devising a way to use our battery and to decrease the voltage supplied to the motor to 6 volts
+so that the motor does not get burnt because of an overload of voltage. We used a simple circuit with two 
+resistors at first. In which we had the first resistor as 2000, and the second one as 1000. The input is 18
+this would lead to the output over the 2000 to be 6 volts so that we could provide to the motor.
+
+We found a major issue when thinking about this solution, as the voltage would drop down but the current 
+would still be to large and would possibly hurt the motor pins because it is too much current. 
+
+Our thought to fix this problem was to create parallel resitors to try lowering the current. The issue is if
+we then connect this to the motor, because the resistance in the motor is so low it would cause everything to
+go through the motor instead of the resistors because it would go through the path of least resistance.
