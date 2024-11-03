@@ -1,0 +1,52 @@
+#include <Servo.h>
+
+// Create a Servo object to control the servo motor
+Servo myServo;
+
+// Pin to which the servo is connected
+const int servoPin = 9;
+
+// Variable to store the current angle
+int currentAngle = 90; // Start at middle position
+
+void setup() {
+  // Attach the servo to pin 9
+  myServo.attach(servoPin);
+
+  // Set initial position of the servo (0 to 180 degrees)
+  myServo.write(currentAngle);
+
+  // Begin serial communication for debugging
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Check if user has entered a degree
+  if (Serial.available() > 0) {
+    int angle = Serial.parseInt();
+    if (angle >= 0 && angle <= 180) {
+      moveToAngleSlowly(angle);
+      currentAngle = angle; // Update current angle after moving
+    } else {
+      Serial.println("Invalid angle. Please enter a value between 0 and 180.");
+    }
+  }
+}
+
+// Function to move the servo to a specified angle slowly
+void moveToAngleSlowly(int targetAngle) {
+  if (currentAngle < targetAngle) {
+    for (int pos = currentAngle; pos <= targetAngle; pos++) {
+      myServo.write(pos);
+      delay(20); // Delay to make movement slower
+    }
+  } else {
+    for (int pos = currentAngle; pos >= targetAngle; pos--) {
+      myServo.write(pos);
+      delay(20); // Delay to make movement slower
+    }
+  }
+
+  Serial.print("Moved to angle: ");
+  Serial.println(targetAngle);
+}
