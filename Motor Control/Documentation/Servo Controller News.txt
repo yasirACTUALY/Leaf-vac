@@ -1,0 +1,13 @@
+New information about servo controller:
+
+Currently, we were worried about the current provided to the servos that are going to be used for the arm.
+We saw the required amps that we might not have been able to reach but we have figured out a workaround if what 
+we know about the servos are true.
+We can have the battery voltage and current supply power the servos directly with the usage of a voltage
+divider that would provide the proper voltage required for the servo. For example, the servo that requires
+6 voltage we could create a simple voltage divider that would split the voltage but maintain the needed 
+current for the servo.
+
+We also learned that we did not need an enable pin for our motor driver when we were creating our 
+circuit we have seen that having to input pins was enough to control the wheels precisely, and all we need to 
+do is just include the other pins for the other side of the of the robot so we can control both at the same time
