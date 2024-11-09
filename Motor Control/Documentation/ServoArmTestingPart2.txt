@@ -1,0 +1,17 @@
+This will be about the results of the next week after the first testing results. 
+
+Previously I had stated that one of the big errors that we were recieving was that the code kept returning
+to 0 after inputing a number. The problem was in the area where we were converting the input into an int. 
+For some reason that line of code because we were immediately trying to convert it caused it to keep looking
+for an input and would go to zero if there was not another input. So if we went instead to string then to 
+an int it fixed the issue of going back to zero. So now the servo arm when asked for an input will now go to
+that location.
+
+The next issue that was fixed was that when we did an input of 180 degrees when it was at 0 it would go more
+than 180 degrees. We tried recalibrating to see if that would fix the issue but the movement still was too
+large. To fix this we did some estimating to see if multiplying the input by a number to reduce the number 
+would give us better results. This actually made the results much better. We ended up finding a sweet spot
+of around 0.75 being the number to multiply and now the servo arm moves at a perfect accuracy
+
+The next problem that we need to fix is the current going into the arduino is too much, and is overloading 
+the arduino causing it to keep disconnecting. We need to find a fix to that issue next week.
