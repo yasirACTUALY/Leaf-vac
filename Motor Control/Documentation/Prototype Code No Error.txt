@@ -1,0 +1,25 @@
+#include <Servo.h>
+
+Servo Servo1;
+int servoPin = 9;
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Servo1.attach(servoPin);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  Serial.println("Provide an angle from 0 to 180: ");
+
+  while(Serial.available() == 0) {
+  }
+  String input = Serial.readStringUntil('\n');
+  int angle = input.toInt() * 0.75;
+  Serial.println("Received angle: " + String(angle));
+  Servo1.write(angle);
+  Serial.flush();
+  delay(2000);
+}
