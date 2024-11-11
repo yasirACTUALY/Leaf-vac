@@ -1,26 +1,19 @@
 
-import Header from "@/Components/Header/Header"; 
 import Topnav from "@/Components/Topnav/topnav"; 
-import Image from "@/Components/Images/Image"; 
 
-import styles from "./topnav.style.css";
-import stylez from "./image.style.css";
 
+// import 
+import "./topnav.style.css";
+import"./image.style.css";
+import xx from './pictures/Picture.png';
 
 export default function Page() {
-  return (<>
-    {/* <div className={styles.header}>
-      <Header />
-    </div> */}
-
-    <div className={styles.header}>
-      <Topnav />
+  return (
+    <div>
+      <div className="topnav">
+        <Topnav />
+      </div>
+        <img src={xx.src} alt="Big robot photo" className="imgstyle"/>
     </div>
-
-    <div className={stylez.image}>
-      <Image/>
-    </div>
-
-    </>
   );
-}
+};

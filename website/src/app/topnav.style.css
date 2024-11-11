@@ -21,7 +21,7 @@ color: black;
 
 /* Add a color to the active/current link */
 .topnav a.active {
-background-color: #c9e41b;
+background-color: #d9dcc6;
 color: white;
 }
 
@@ -30,7 +30,16 @@ color: white;
 float: right;
 }
 
-.dropdown .dropbtn {
+.topnav-center {
+  float: center;
+  }
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.topnav .dropbtn {
   font-size: 17px;    
   border: none;
   outline: none;
@@ -40,3 +49,24 @@ float: right;
   font-family: inherit;
   margin: 0;
 }
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #333;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #white;
+  color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
