@@ -1,8 +1,6 @@
 
 import Topnav from "@/Components/Topnav/topnav"; 
 
-
-// import 
 import "./topnav.style.css";
 import"./image.style.css";
 import xx from './pictures/Picture.png';
