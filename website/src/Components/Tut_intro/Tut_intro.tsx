@@ -1,4 +1,4 @@
-export default function Tutorial() {
+export default function Tut_intro() {
     return (<>
     <div className="tutorial">
         <p>

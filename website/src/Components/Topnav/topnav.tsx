@@ -3,7 +3,7 @@ export default function Topnav() {
     <div className="topnav">
       <a className="active" href = "#home">Graspy</a>
       <a className="active" href="#home">Home</a>
-      <a href="tutorial">How it Works</a>
+      <a href="#tutorial">How it Works</a>
       <a href="design process">Design Process</a>
   
       <div className="topnav-right">

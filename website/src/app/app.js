@@ -2,8 +2,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Page from './page.tsx';
-import About from './about.tsx';
-import HowItWorks from './tutorial.tsx'
+// import About from './about.tsx';
+import Tutorial from './tutorial.tsx'
  
 export default function App() {
    return (
@@ -11,8 +11,8 @@ export default function App() {
          <Routes>
             <Route path="/" element={<Page/>} />
             <Route path="/home" element={<Page/>} />
-            <Route path="/About us" element={<About/>} />
-            <Route path="/tutorial" element={<HowItWorks/>} />
+            {/* <Route path="/About us" element={<About/>} /> */}
+            <Route path="/tutorial" element={<Tutorial/>} />
          </Routes>
       </BrowserRouter>
    );

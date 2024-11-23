@@ -1,12 +1,12 @@
 
-import Tutorial from "@/Components/Tutorial/Tutorial";
+import Tut_intro from "@/Components/Tut_intro/Tut_intro";
 import "./tutorial.style.css";
 
-export default function HowItWorks() {
+export default function Tutorial() {
   return (
-    <div>
+    <div id="tutorial">
       <div className="tutorial">
-        <Tutorial />
+        <Tut_intro />
       </div>
     </div>
   );
