@@ -1,0 +1,70 @@
+#include <Servo.h>
+
+// Create servo objects
+Servo Servo1;
+Servo Servo2;
+Servo Servo3;
+Servo Servo4;
+
+// Define pins for servos
+int servoPin1 = 9;
+int servoPin2 = 10;
+int servoPin3 = 11;
+int servoPin4 = 12;
+
+void setup() {
+  Serial.begin(9600);
+
+  // Attach servos to pins
+  Servo1.attach(servoPin1);
+  Servo2.attach(servoPin2);
+  Servo3.attach(servoPin3);
+  Servo4.attach(servoPin4);
+}
+
+void loop() {
+  Serial.println("angles for 4 servos 0 - 180");
+
+  // Wait for user input
+  while (Serial.available() == 0) {
+  }
+
+  // Read the input as a string
+  String input = Serial.readStringUntil('\n');
+  input.trim(); // Remove any trailing whitespace
+
+  // Split the input into separate angles
+  int angles[4];
+  int index = 0;
+  int startIndex = 0;
+
+  for (int i = 0; i < input.length(); i++) {
+    if (input[i] == ' ' || i == input.length() - 1) {
+      if (i == input.length() - 1) i++; // Include the last number
+      String angleString = input.substring(startIndex, i);
+      angles[index] = angleString.toInt() * 0.75; // Scale angle properly because its incorrect if not
+      index++;
+      startIndex = i + 1;
+    }
+  }
+
+  // Ensure we have 4 valid angles
+  if (index == 4) {
+    // Print received angles
+    Serial.println("angles:");
+    for (int i = 0; i < 4; i++) {
+      Serial.print("Servo ");
+      Serial.print(i + 1);
+      Serial.print(": ");
+      Serial.println(angles[i]);
+    }
+
+    // Write angles to servos
+    Servo1.write(angles[0]);
+    Servo2.write(angles[1]);
+    Servo3.write(angles[2]);
+    Servo4.write(angles[3]);
+  } 
+  Serial.flush();
+  delay(2000);
+}
