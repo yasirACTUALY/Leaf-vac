@@ -1,0 +1,49 @@
+import RPi.GPIO as GPIO
+import keyboard
+import time
+
+# Define GPIO pins for Motor A
+motor1Pin1 = 27
+motor1Pin2 = 26
+
+# GPIO setup
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(motor1Pin1, GPIO.OUT)
+GPIO.setup(motor1Pin2, GPIO.OUT)
+
+def stop_motor():
+    """Stop the motor."""
+    GPIO.output(motor1Pin1, GPIO.LOW)
+    GPIO.output(motor1Pin2, GPIO.LOW)
+
+def move_forward():
+    """Move the motor forward."""
+    GPIO.output(motor1Pin1, GPIO.HIGH)
+    GPIO.output(motor1Pin2, GPIO.HIGH)
+
+
+def turn_left():
+    """Simulate left turn by stopping one side."""
+    GPIO.output(motor1Pin1, GPIO.HIGH)
+    GPIO.output(motor1Pin2, GPIO.LOW)
+
+def turn_right():
+    """Simulate right turn by activating one side."""
+    GPIO.output(motor1Pin1, GPIO.LOW)
+    GPIO.output(motor1Pin2, GPIO.HIGH)
+
+try:
+    while True:
+        if keyboard.is_pressed('w'):
+            print("forward...")
+            move_forward()
+        elif keyboard.is_pressed('a'):
+            print("left...")
+            turn_left()
+        elif keyboard.is_pressed('d'):
+            print("right...")
+            turn_right()
+        else:
+            # Stop motor if no key is pressed
+            stop_motor()
+        time.sleep(0.1)
