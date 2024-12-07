@@ -1,0 +1,59 @@
+import pigpio
+import time
+
+
+# Similar code as the previous but we have changed to raspberry pi so we had to update the code to demo
+# Define GPIO pins for servos
+SERVO_PINS = [13, 12, 18, 21]
+
+# Initialize pigpio
+pi = pigpio.pi()
+if not pi.connected:
+    print("Failed")
+    exit()
+
+# Initialize servo pins
+for pin in SERVO_PINS:
+    pi.set_mode(pin, pigpio.OUTPUT)
+
+def set_servo_angle(pin, angle):
+    """
+    Sets the servo angle.
+    :param pin: GPIO pin connected to the servo.
+    :param angle: Angle to set (0-180).
+    """
+    # Convert angle (0-180) to pwm
+    pulse_width = int(500 + (angle * 2000 / 180))
+    pi.set_servo_pulsewidth(pin, pulse_width)
+
+try:
+    while True:
+        # Ask for input angles
+        angles = input("Enter 4 angles (0-180) separated by spaces (e.g., '90 45 120 180'): ").split()
+
+        if len(angles) != 4:
+            print("Please provide exactly 4 angles.")
+            continue
+
+        # Convert to integers and scale
+        try:
+            angles = [int(a) * 0.75 for a in angles]
+        except ValueError:
+            print("Invalid")
+            continue
+
+        # Set angles for each servo
+        for i, angle in enumerate(angles):
+            set_servo_angle(SERVO_PINS[i], angle)
+            print(f"Servo {i+1} set to angle: {angle}")
+
+        time.sleep(2)
+
+except KeyboardInterrupt:
+    print("\nExiting")
+
+finally:
+    # Turn off all servos and stop pigpio
+    for pin in SERVO_PINS:
+        pi.set_servo_pulsewidth(pin, 0)
+    pi.stop()
