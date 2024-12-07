@@ -1,0 +1,8 @@
+For our robot we decided to move forward using the raspberry pi 4 model B instead of the arduino
+because of the slight improvements that come with it. Raspberry pi has more connectivity in which we
+can use bluetooth. This allowed us to use a controller to control the robot. We decided on a playstation 
+controller in which we could utilize the dpads and the other controls on the other side Triangle X O and 
+Square. With this we were able to connect the dpads to control the arm movements and big movements. While
+the Shape buttons we decided to use to more do small specific hand movements to properly get the angle to
+grab objects. 
+We were unable to get a hold of a better hand so we made special objects that our hand could grab.
