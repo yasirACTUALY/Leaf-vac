@@ -1,6 +1,7 @@
 import cv2 as cv
 import glob
 import numpy as np
+import matplotlib.pyplot as plt
  
 
  
@@ -138,6 +139,80 @@ def stereo_calibrate(mtx1, dist1, mtx2, dist2):
     print(ret)
     return R, T
 
+
  
-mtx1, dist1 = calibrate_camera(images_folder = 'D2/*')
-mtx2, dist2 = calibrate_camera(images_folder = 'J2/*')
+def triangulate(mtx1, mtx2, R, T, firstPoint, secondPoint):
+ 
+    uvs1 = firstPoint
+ 
+    uvs2 = secondPoint
+ 
+    uvs1 = np.array(uvs1)
+    uvs2 = np.array(uvs2)
+ 
+ 
+    frame1 = cv.imread('left/left_image_1.png')
+    frame2 = cv.imread('right/right_image_1.png')
+ 
+    plt.imshow(frame1[:,:,[2,1,0]])
+    plt.scatter(uvs1[:,0], uvs1[:,1])
+    plt.show() 
+    plt.imshow(frame2[:,:,[2,1,0]])
+    plt.scatter(uvs2[:,0], uvs2[:,1])
+    plt.show()
+    
+    #RT matrix for C1 is identity.
+    RT1 = np.concatenate([np.eye(3), [[0],[0],[0]]], axis = -1)
+    P1 = mtx1 @ RT1 
+ 
+    RT2 = np.concatenate([R, T], axis = -1)
+    P2 = mtx2 @ RT2 
+ 
+    def DLT(P1, P2, point1, point2):
+ 
+        A = [point1[1]*P1[2,:] - P1[1,:],
+             P1[0,:] - point1[0]*P1[2,:],
+             point2[1]*P2[2,:] - P2[1,:],
+             P2[0,:] - point2[0]*P2[2,:]
+            ]
+        A = np.array(A).reshape((4,4))
+        #print('A: ')
+        #print(A)
+ 
+        B = A.transpose() @ A
+        from scipy import linalg
+        U, s, Vh = linalg.svd(B, full_matrices = False)
+ 
+        print('Triangulated point: ')
+        print(Vh[3,0:3]/Vh[3,3])
+        return Vh[3,0:3]/Vh[3,3]
+ 
+    p3ds = []
+    for uv1, uv2 in zip(uvs1, uvs2):
+        _p3d = DLT(P1, P2, uv1, uv2)
+        p3ds.append(_p3d)
+    p3ds = np.array(p3ds)
+ 
+    from mpl_toolkits.mplot3d import Axes3D
+ 
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.set_xlim3d(-15, 5)
+    ax.set_ylim3d(-10, 10)
+    ax.set_zlim3d(10, 30)
+ 
+    connections = [[0,1], [1,2], [2,3], [3,4], [1,5], [5,6], [6,7], [1,8], [1,9], [2,8], [5,9], [8,9], [0, 10], [0, 11]]
+    for _c in connections:
+        print(p3ds[_c[0]])
+        print(p3ds[_c[1]])
+        ax.plot(xs = [p3ds[_c[0],0], p3ds[_c[1],0]], ys = [p3ds[_c[0],1], p3ds[_c[1],1]], zs = [p3ds[_c[0],2], p3ds[_c[1],2]], c = 'red')
+    ax.set_title('This figure can be rotated.')
+    plt.show()
+
+mtx1, dist1 = calibrate_camera(images_folder = 'left/*')
+mtx2, dist2 = calibrate_camera(images_folder = 'right/*')
+R, T = stereo_calibrate(mtx1, dist1, mtx2, dist2)
+
+# Use R and T to generate a distaprity map
+imgL = cv.imread('left/left_image_1.png', 0)
+imgR = cv.imread('right/right_image_1.png', 0)
