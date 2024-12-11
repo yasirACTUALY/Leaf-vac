@@ -1,3 +1,4 @@
+"use client";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router";
 
@@ -18,5 +19,5 @@ export default function App() {
    );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<App />);

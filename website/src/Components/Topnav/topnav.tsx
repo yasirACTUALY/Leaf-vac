@@ -1,3 +1,4 @@
+"use client";
 import { Link } from "react-router";
 
 export default function Topnav() {
